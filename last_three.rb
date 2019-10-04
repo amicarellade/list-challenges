@@ -1,148 +1,3 @@
-#median
-# When we dont have to look at everything at the list, no loops
-# list[x] 
-
-def median(list)
-    if list.size % 2 == 1
-    #odd length lists
-        return list[list.size/2] # 3 / 2 = 1
-    else
-        # even length lists
-        (list[list.size/2] + list[list.size / 2 - 1]) / 2.0
-    end
-end
-# #            0 1 2
-# puts median([1,2,3]) # 2
-# #               0 1 2 3    size is 4 => 4 / 2 = 2
-# puts median([1,2,3,4]) # 2.5
-
-
-def starts_with?(list,number)
-    if list[0] == number
-        return true
-    else
-        return false
-    end
-end
-
-# puts starts_with?([1, 2, 3], 1) # true
-# puts starts_with?([1, 2, 3], 2) # false
-
-# # 2 - look at everything once to solve the problem
-
-def avg(list)
-    total = 0
-    list.each do |n| # each is simpler than times loop
-        total += n # total = total + n
-    end
-
-    return total / list.size.to_f
-end
-
-# puts avg([1,2,3]) # 2
-
-def std_dev(list)
-    total = 0
-    list.each do |n| 
-        total += n 
-    end
-
-    avg = total / list.size.to_f
-
-    sum_of_squares = 0
-    list.each do |n|
-        term = (x - avg)*(x - avg)
-        sum_of_squares = sum_of_squares + term
-    end
-
-    return Math.sgrt(sum_of_squares / (list.size - 1))
-end
-
-def list_has?(list, target)
-
-    list.each do |n|
-        if n == target
-            return true
-        end
-    end
-
-    return false
-end
-
-# puts list_has?([1,2,3], 2) # true
-# puts list_has?([1,2,3], 5) # false
-
-# 3 - Have to compare value from a list against everything else in the list
-
-# list is any order - not sorted
-def mode(list)
-
-    max_count = 0
-    modes = list[0]
-    list.each do |n| #looping through OG list number trying to find mode
-        
-        count = 0
-        list.each do |m| # count how many of ns exist in the list
-            if n == m 
-                count += 1
-            end
-        end
-        
-        if count > max_count
-            max_count = count
-            modes = [n] 
-        elsif count == max_count
-            if !list.include?(n)
-                modes.push(n)
-            end
-        end
-
-    end
-
-    return modes.sort
-
-end
-
-# print mode([2,7,5,6,5]) # 5
-
-
-def is_increasing?(list)
-
-    (list.size - 1).times do |i|
-        if list[i] < list[i + 1]
-            return false
-        end
-    end
-
-    return true 
-
-end 
-# #                    0 1 2
-# puts is_increasing?([2,3,4]) # true
-# puts is_increasing?([3,2,4]) # false
-# puts is_increasing?([3,2,2,4]) # false
-
-
-# def num_cats(str)
-
-#     # count = 0 
-#     (str.size - 2).times do |i|
-#         slice = str[i..(i + 2)]
-#         # if slice == "cat"
-#         #     count += 1
-#         end
-#         puts slice
-#     end
-
-#     # return count
-# end
-
-# puts num_cats("catdogcat") #2
-# puts num_cats("catdogcatcat") #3
-# puts num_cats("dog") #0
-
-# LIST CHALLENGES
-
 def threed(list)
     count = 0
     list.each do |i|
@@ -267,7 +122,7 @@ end
 # puts count_code("ihatetocode") # 1
 # puts count_code("icooehatetocode") # 2
 # puts count_code("ihatetocope") # 1
-# -----
+
 def OG_list1(list)
     if list.size % 2 == 1
         #odd length lists
@@ -294,7 +149,6 @@ def middle_way(list,list2)
 end
 
 # puts middle_way([1,2,3], [4,5,6]) # 2, 5
-
 def either_2_4(list)
     puts "code is going"
     index = 0
@@ -305,7 +159,7 @@ def either_2_4(list)
             count += 1 
         end
         index = index + 1
-    end 
+    end
     
     if count == 1
         return true
@@ -318,3 +172,62 @@ end
 # puts either_2_4([1, 2, 2, 4, 5]) # true
 # puts either_2_4([1, 2, 4]) # false
 # puts either_2_4([1, 2, 4, 4]) # true
+
+def max_span(list)
+    count = 0
+    list.sort
+    a = list
+    a.shift
+    last_item = a.pop
+    a
+    list.each do |i|
+        count = i + 1
+        return count
+    end
+end
+
+# puts max_span([4, 5, 2, 6, 7, 8, 9, 11]) # 6
+# puts max_span([4, 2, 5, 6, 7]) # 3
+
+def g_happy(str)
+    index = 0
+    count = 0
+    letter = "g"
+    puts "code is going"
+    str.size do i
+        if i  == letter && i ==str[index+1] && i ==str[index-1] && i = letter
+            count += 1 
+        puts count
+        end
+        index = index + 1
+    end 
+    
+        if count == 1
+                return false
+    end  
+                  
+            return true
+    
+end 
+          
+puts g_happy("can yougg?") # true
+a = [3, 4, 6, 10, 11, 15]
+b = [1, 5, 8, 12, 14, 19]
+def merge_arrays(a,b)
+  result = []
+    if a[0] < b[0]
+    result << a.shift
+    else
+    result << b.shift
+    end
+
+    if a.length == 0
+       return result + b
+    elsif b.length == 0
+       return result + a
+    else
+       return result + merge_arrays(a, b)
+    end
+    
+end
+puts merge_arrays(a,b)
