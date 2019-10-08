@@ -208,27 +208,30 @@ end
 # puts max_span([4, 2, 5, 6, 7]) # 3
 
 def g_happy(str)
-    index = 0
-    count = 0
-    letter = "g"
-    puts "code is going"
-    str.size do i
-        if i  == letter && i ==str[index+1] && i ==str[index-1] && i = letter
-            count += 1 
-        puts count
+        i = 0
+        count = 0
+        str.size.times do |letter|
+        if str[letter] = "g"
+            if str[letter] != str[i+1]
+                if str[letter] != str[i-1]
+                    return false
+                end
+            end
+        else
+            count += 1
         end
-        index = index + 1
-    end 
-    
-        if count == 1
-                return false
-    end  
-                  
-            return true
-    
-end 
-          
-# puts g_happy("can yougg?") # true
+        i += 1
+    end
+        if count == str.size
+            return false
+        else
+            return true
+        end    
+end  
+
+# puts g_happy("What are you saying") # false
+# puts g_happy("I guess this is correct gg") # true
+
 
 a = [3, 4, 6, 10, 11, 15]
 b = [1, 5, 8, 12, 14, 19]
@@ -249,14 +252,14 @@ def merge_arrays(a,b)
     end
     
 end
-# puts merge_arrays(a,b)
+puts merge_arrays(a,b)
 
-# def is_everywhere(list, number)
-#     (list.times - 1) do |i|
+def is_everywhere(list, number)
+    (list.times - 1) do |i|
 
 
 
-# end
+end
 
 # puts is_everywhere([1, 2, 1, 3], 1) # true
 # puts is_everywhere([1, 2, 1, 3], 2) # false
