@@ -70,6 +70,24 @@ end
 
 # print shift_left([6, 2, 5, 3]) #[2, 5, 3, 6]
 
+def shift_left2(list)
+    list_new = list
+    i = 0
+    first = list[0]
+
+    list.size.times do |i|
+        list_new[i] = list[i + 1]
+        i += 1
+    end
+    list_new[list.size - 1] = first
+
+    return list_new
+
+end
+
+# print shift_left2([6, 2, 5, 3]) # [2, 5, 3, 6]
+
+
 def balance(list)
     if list.size % 2 == 1 
         return false
@@ -210,7 +228,8 @@ def g_happy(str)
     
 end 
           
-puts g_happy("can yougg?") # true
+# puts g_happy("can yougg?") # true
+
 a = [3, 4, 6, 10, 11, 15]
 b = [1, 5, 8, 12, 14, 19]
 def merge_arrays(a,b)
@@ -230,4 +249,15 @@ def merge_arrays(a,b)
     end
     
 end
-puts merge_arrays(a,b)
+# puts merge_arrays(a,b)
+
+# def is_everywhere(list, number)
+#     (list.times - 1) do |i|
+
+
+
+# end
+
+# puts is_everywhere([1, 2, 1, 3], 1) # true
+# puts is_everywhere([1, 2, 1, 3], 2) # false
+# puts is_everywhere([1, 2, 1, 3, 4], 1) # false
